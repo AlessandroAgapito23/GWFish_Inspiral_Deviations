@@ -239,7 +239,7 @@ class TaylorF2_PPE(Inspiral_corr):
         bx1.set_xlim(f_limits)
          
         bx2.semilogx(self.frequencyvector*f_dim, delta_phase, linewidth=2, color='red', label=r'$\delta \Phi(f)$')
-        bx2.set_xlabel('f [Hz]',  fontsize = 17)
+        bx2.set_xlabel(r'$\hat f',  fontsize = 17)
         bx2.set_ylabel(r'$\delta \Phi(f)$ [rad]', fontsize = 15)
         bx2.legend(fontsize=13)
         bx2.grid(which='both', color='lightgray', alpha=0.5, linestyle='dashed', linewidth=0.5)
