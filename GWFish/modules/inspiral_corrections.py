@@ -198,8 +198,11 @@ class TaylorF2_PPE(Inspiral_corr):
         M, mu, Mc, delta_mass, eta, eta2, eta3, chi_eff, chi_PN, chi_s, chi_a, C, ff, ones = wf.Waveform.get_param_comb(self)
         psi_TF2, psi_TF2_prime, psi_TF2_f1, psi_TF2_prime_f1 = wf.TaylorF2.calculate_phase(self)
         psi = TaylorF2_PPE.calculate_phase(self)
+        f1, f2, f1_amp, f2_amp, f3_amp = IMRPhenomD.transition_freq(self)
         
         delta_phase = psi - psi_TF2
+        f_dim = cst.G*M/cst.c**3
+        f_limits = (0.0006, f1_amp)
         
         fig, (ax1, ax2, ax3) = plt.subplots(3, 1, figsize=(8, 7))
 
@@ -228,17 +231,19 @@ class TaylorF2_PPE(Inspiral_corr):
         # Delta_phase
         fig, (bx1, bx2) = plt.subplots(2, 1, figsize=(8, 7))
 
-        bx1.semilogx(self.frequencyvector, psi_TF2, label=r'$\Phi(f)^{GR}$', color='red')
-        bx1.semilogx(self.frequencyvector, psi, label=r'$\Phi(f)^{GR} + \delta \Phi(f)$', color='blue')
+        bx1.semilogx(self.frequencyvector*f_dim, psi_TF2, label=r'$\Phi(f)^{GR}$', color='red')
+        bx1.semilogx(self.frequencyvector*f_dim, psi, label=r'$\Phi(f)^{GR} + \delta \Phi(f)$', color='blue')
         bx1.set_ylabel('Phase [rad]',  fontsize = 17)
         bx1.legend(fontsize = 13)
         bx1.grid(which='both', color='lightgray', alpha=0.5, linestyle='dashed', linewidth=0.6)
+        bx1.set_xlim(f_limits)
          
-        bx2.semilogx(self.frequencyvector, delta_phase, linewidth=2, color='red', label=r'$\delta \Phi(f)$')
+        bx2.semilogx(self.frequencyvector*f_dim, delta_phase, linewidth=2, color='red', label=r'$\delta \Phi(f)$')
         bx2.set_xlabel('f [Hz]',  fontsize = 17)
         bx2.set_ylabel(r'$\delta \Phi(f)$ [rad]', fontsize = 15)
         bx2.legend(fontsize=13)
         bx2.grid(which='both', color='lightgray', alpha=0.5, linestyle='dashed', linewidth=0.5)
+        bx2.set_xlim(f_limits)
          
         plt.tight_layout()
         plt.savefig(output_folder + 'delta_phase_tot_PPE.pdf')
