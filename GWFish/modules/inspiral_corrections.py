@@ -202,7 +202,7 @@ class TaylorF2_PPE(Inspiral_corr):
         
         delta_phase = psi - psi_TF2
         f_dim = cst.G*M/cst.c**3
-        f_limits = (0.00006, f1_amp)
+        f_limits = (0.0001, f1_amp)
         
         fig, (ax1, ax2, ax3) = plt.subplots(3, 1, figsize=(8, 7))
 
