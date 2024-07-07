@@ -202,7 +202,7 @@ class TaylorF2_PPE(Inspiral_corr):
         
         delta_phase = psi - psi_TF2
         f_dim = cst.G*M/cst.c**3
-        f_limits = (0.0006, f1_amp)
+        f_limits = (0.00006, f1_amp)
         
         fig, (ax1, ax2, ax3) = plt.subplots(3, 1, figsize=(8, 7))
 
@@ -239,7 +239,7 @@ class TaylorF2_PPE(Inspiral_corr):
         bx1.set_xlim(f_limits)
          
         bx2.semilogx(self.frequencyvector*f_dim, delta_phase, linewidth=2, color='red', label=r'$\delta \Phi(f)$')
-        bx2.set_xlabel(r'$\hat f',  fontsize = 17)
+        bx2.set_xlabel(r'$\hat f$',  fontsize = 17)
         bx2.set_ylabel(r'$\delta \Phi(f)$ [rad]', fontsize = 15)
         bx2.legend(fontsize=13)
         bx2.grid(which='both', color='lightgray', alpha=0.5, linestyle='dashed', linewidth=0.5)
