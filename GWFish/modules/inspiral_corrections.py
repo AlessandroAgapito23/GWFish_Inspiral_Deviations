@@ -226,12 +226,20 @@ class TaylorF2_PPE(Inspiral_corr):
         plt.savefig(output_folder + 'TF2_combined_plot.pdf')
 
         # Delta_phase
-        plt.figure()
-        plt.semilogx(self.frequencyvector, delta_phase, linewidth=2, color='red', label=r'$\Phi(f) - \Phi^{GR}}$')
-        plt.xlabel('$f$ [Hz]', fontsize = 15)
-        plt.ylabel(r'$\Delta \Phi (f)$ [rad]', fontsize = 15)
-        plt.legend(fontsize=13)
-        plt.grid(which='both', color='lightgray', alpha=0.5, linestyle='dashed', linewidth=0.5)
+        fig, (bx1, bx2, bx3) = plt.subplots(3, 1, figsize=(8, 7))
+
+        bx1.semilogx(self.frequencyvector, psi_TF2, label=r'$\Phi(f)^{GR}$', color='red')
+        bx1.semilogx(self.frequencyvector, psi, label=r'$\Phi(f)^{GR} + \delta \Phi(f)$', color='blue')
+        bx1.set_ylabel('Phase [rad]',  fontsize = 17)
+        bx1.legend(fontsize = 13)
+        bx1.grid(which='both', color='lightgray', alpha=0.5, linestyle='dashed', linewidth=0.6)
+         
+        bx2.semilogx(self.frequencyvector, delta_phase, linewidth=2, color='red', label=r'$\delta \Phi(f)$')
+        bx2.set_xlabel('f [Hz]',  fontsize = 17)
+        bx2.set_ylabel(r'$\delta \Phi(f)$ [rad]', fontsize = 15)
+        bx2.legend(fontsize=13)
+        bx2.grid(which='both', color='lightgray', alpha=0.5, linestyle='dashed', linewidth=0.5)
+         
         plt.tight_layout()
         plt.savefig(output_folder + 'delta_phase_tot_PPE.pdf')
         plt.show()
