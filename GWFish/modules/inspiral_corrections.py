@@ -229,7 +229,7 @@ class TaylorF2_PPE(Inspiral_corr):
         plt.savefig(output_folder + 'TF2_combined_plot.pdf')
 
         # Delta_phase
-        fig, (bx2) = plt.subplots(1, 1, figsize=(8, 7))
+        fig, (bx2) = plt.subplots(1, 1, figsize=(8, 4))
         """
         bx1.semilogx(self.frequencyvector*f_dim, psi_TF2, label=r'$\Phi(f)^{GR}$', color='red')
         bx1.semilogx(self.frequencyvector*f_dim, psi, label=r'$\Phi(f)^{GR} + \delta \Phi(f)$', color='blue')
