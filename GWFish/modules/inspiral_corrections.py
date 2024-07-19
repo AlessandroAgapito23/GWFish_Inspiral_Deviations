@@ -409,8 +409,12 @@ class TaylorF2_mult(Inspiral_corr):
         f1, f2, f1_amp, f2_amp, f3_amp = wf.IMRPhenomD.transition_freq(self)
         f_dim = cst.G*M/cst.c**3
         f_limits = (0.0001, f1)
+
+        P4, P6, P7, P8, P10 , P12 = TaylorF2_mult.INS_mult_coeff(self)
         
-        delta_phase = psi - psi_TF2
+        delta_phase = psi -\
+                      psi_TF2 -\
+                      P8*(1 - np.log(np.pi*ff))*(np.pi*ff)**(1.)
         
         fig, (ax1, ax2, ax3) = plt.subplots(3, 1, figsize=(8, 7))
 
