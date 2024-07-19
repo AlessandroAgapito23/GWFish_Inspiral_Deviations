@@ -412,11 +412,11 @@ class TaylorF2_mult(Inspiral_corr):
 
         P4, P6, P7, P8, P10 , P12 = TaylorF2_mult.INS_mult_coeff(self)
         
-        delta_phase = psi -\
-                      psi_TF2 -\
-                      3./(128.*eta)*(P4*(np.pi*ff)**(-1./3.) +\
-                                     P8*(1 - np.log(np.pi*ff))*(np.pi*ff)**(1.))
-                       
+        delta_phase = + 3./(128.*eta)*(P7 -\
+                                       ((1760./3.*(11831./9240.) + 12320./9.*(-1987./3080.))*eta +\
+                                        ((75515./288. - 232415./504.*eta + 1255./9.*eta2)*chi_s**2 +\
+                                        (75515./288. - 263245./252.*eta - 480.*eta2)*chi_a**2)
+                                        ))*(np.pi*ff)**(2./3.)
                       
         fig, (ax1, ax2, ax3) = plt.subplots(3, 1, figsize=(8, 7))
 
