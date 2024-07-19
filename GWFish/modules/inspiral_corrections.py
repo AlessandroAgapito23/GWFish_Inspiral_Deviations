@@ -443,6 +443,30 @@ class TaylorF2_mult(Inspiral_corr):
         plt.savefig(output_folder + 'delta_phase_tot_mult.png')
         plt.show()
 
+        # Delta_phase
+        fig, (bx2) = plt.subplots(1, 1, figsize=(8, 4))
+        """
+        bx1.semilogx(self.frequencyvector*f_dim, psi_TF2, label=r'$\Phi(f)^{GR}$', color='red')
+        bx1.semilogx(self.frequencyvector*f_dim, psi, label=r'$\Phi(f)^{GR} + \delta \Phi(f)$', color='blue')
+        bx1.set_ylabel('Phase [rad]',  fontsize = 17)
+        bx1.legend(fontsize = 13)
+        bx1.grid(which='both', color='lightgray', alpha=0.5, linestyle='dashed', linewidth=0.6)
+        bx1.set_xlim(f_limits)
+        """
+         
+        bx2.semilogx(self.frequencyvector*f_dim, delta_phase, linewidth=2, color='red', label=r'$\delta \Phi(f)$')
+        bx2.set_xlabel(r'$\hat f$',  fontsize = 17)
+        bx2.set_ylabel(r'$\delta \Phi(f)$ [rad]', fontsize = 15)
+        bx2.legend(fontsize=13)
+        bx2.grid(which='both', color='lightgray', alpha=0.5, linestyle='dashed', linewidth=0.5)
+        bx2.set_xlim(f_limits)
+         
+        plt.tight_layout()
+        plt.savefig(output_folder + 'delta_phase_tot_PPE.pdf')
+        plt.show()
+
+        plt.close()
+
         plt.close()
 
 
