@@ -405,6 +405,10 @@ class TaylorF2_mult(Inspiral_corr):
         M, mu, Mc, delta_mass, eta, eta2, eta3, chi_eff, chi_PN, chi_s, chi_a, C, ff, ones = wf.Waveform.get_param_comb(self)
         psi_TF2, psi_TF2_prime, psi_TF2_f1, psi_TF2_prime_f1 = wf.TaylorF2.calculate_phase(self)
         psi = TaylorF2_mult.calculate_phase(self)
+
+        f1, f2, f1_amp, f2_amp, f3_amp = wf.IMRPhenomD.transition_freq(self)
+        f_dim = cst.G*M/cst.c**3
+        f_limits = (0.0001, f1)
         
         delta_phase = psi - psi_TF2
         
