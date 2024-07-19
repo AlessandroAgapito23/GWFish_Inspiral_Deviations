@@ -408,7 +408,7 @@ class TaylorF2_mult(Inspiral_corr):
 
         f1, f2, f1_amp, f2_amp, f3_amp = wf.IMRPhenomD.transition_freq(self)
         f_dim = cst.G*M/cst.c**3
-        f_limits = (0.0001, f1)
+        f_limits = (0.001, f1)
         phi_limits = (-8., 1.)
 
         P4, P6, P7, P8, P10 , P12 = TaylorF2_mult.INS_mult_coeff(self)
