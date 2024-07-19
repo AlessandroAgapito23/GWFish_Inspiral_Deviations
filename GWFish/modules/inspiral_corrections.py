@@ -409,6 +409,7 @@ class TaylorF2_mult(Inspiral_corr):
         f1, f2, f1_amp, f2_amp, f3_amp = wf.IMRPhenomD.transition_freq(self)
         f_dim = cst.G*M/cst.c**3
         f_limits = (0.001, f1)
+        phi_limits = (-10., 1.)
 
         P4, P6, P7, P8, P10 , P12 = TaylorF2_mult.INS_mult_coeff(self)
         
@@ -470,6 +471,7 @@ class TaylorF2_mult(Inspiral_corr):
         bx2.legend(fontsize=13)
         bx2.grid(which='both', color='lightgray', alpha=0.5, linestyle='dashed', linewidth=0.5)
         bx2.set_xlim(f_limits)
+        bx2.set_ylim(phi_limits)
          
         plt.tight_layout()
         plt.savefig(output_folder + 'delta_phase_tot_PPE.pdf')
