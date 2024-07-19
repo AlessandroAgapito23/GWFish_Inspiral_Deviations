@@ -414,8 +414,10 @@ class TaylorF2_mult(Inspiral_corr):
         
         delta_phase = psi -\
                       psi_TF2 -\
-                      3./(128.*eta)*P8*(1 - np.log(np.pi*ff))*(np.pi*ff)**(1.)
-        
+                      3./(128.*eta)*(P4*(np.pi*ff)**(-1./3.) +\
+                                     P8*(1 - np.log(np.pi*ff))*(np.pi*ff)**(1.))
+                       
+                      
         fig, (ax1, ax2, ax3) = plt.subplots(3, 1, figsize=(8, 7))
 
         # Fourier amplitude
