@@ -229,15 +229,14 @@ class TaylorF2_PPE(Inspiral_corr):
         plt.savefig(output_folder + 'TF2_combined_plot.pdf')
 
         # Delta_phase
-        fig, (bx2) = plt.subplots(1, 1, figsize=(8, 4))
-        """
+        fig, (bx2) = plt.subplots(2, 1, figsize=(8, 4))
+        
         bx1.semilogx(self.frequencyvector*f_dim, psi_TF2, label=r'$\Phi(f)^{GR}$', color='red')
-        bx1.semilogx(self.frequencyvector*f_dim, psi, label=r'$\Phi(f)^{GR} + \delta \Phi(f)$', color='blue')
+        #bx1.semilogx(self.frequencyvector*f_dim, psi, label=r'$\Phi(f)^{GR} + \delta \Phi(f)$', color='blue')
         bx1.set_ylabel('Phase [rad]',  fontsize = 17)
         bx1.legend(fontsize = 13)
         bx1.grid(which='both', color='lightgray', alpha=0.5, linestyle='dashed', linewidth=0.6)
         bx1.set_xlim(f_limits)
-        """
          
         bx2.semilogx(self.frequencyvector*f_dim, delta_phase, linewidth=2, color='red', label=r'$\delta \Phi(f)$')
         bx2.set_xlabel(r'$\hat f$',  fontsize = 17)
@@ -455,15 +454,14 @@ class TaylorF2_mult(Inspiral_corr):
         plt.show()
 
         # Delta_phase
-        fig, (bx2) = plt.subplots(1, 1, figsize=(8, 4))
-        """
+        fig, (bx2) = plt.subplots(2, 1, figsize=(8, 4))
+        
         bx1.semilogx(self.frequencyvector*f_dim, psi_TF2, label=r'$\Phi(f)^{GR}$', color='red')
-        bx1.semilogx(self.frequencyvector*f_dim, psi, label=r'$\Phi(f)^{GR} + \delta \Phi(f)$', color='blue')
+        #bx1.semilogx(self.frequencyvector*f_dim, psi, label=r'$\Phi(f)^{GR} + \delta \Phi(f)$', color='blue')
         bx1.set_ylabel('Phase [rad]',  fontsize = 17)
         bx1.legend(fontsize = 13)
         bx1.grid(which='both', color='lightgray', alpha=0.5, linestyle='dashed', linewidth=0.6)
         bx1.set_xlim(f_limits)
-        """
          
         bx2.semilogx(self.frequencyvector*f_dim, delta_phase, linewidth=2, color='red', label=r'$\delta \Phi(f)$')
         bx2.set_xlabel(r'$\hat f$',  fontsize = 17)
