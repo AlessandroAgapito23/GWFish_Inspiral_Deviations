@@ -17,6 +17,7 @@ PSD_PATH = Path(__file__).parent.parent / 'detector_psd'
 # used when redefining the time and frequency vectors
 N_FREQUENCY_POINTS = 1000
 
+##################################################################################################
 class DetectorComponent:
 
     def __init__(self, name, component, detector_def):
@@ -115,6 +116,7 @@ class DetectorComponent:
         plt.grid(True)
         plt.tight_layout()
 
+##################################################################################################
 class Detector:
     
     def __init__(self, name: str, config=DEFAULT_CONFIG):
@@ -173,7 +175,7 @@ class Detector:
         else:
             self.components.append(DetectorComponent(name=name, component=0, detector_def=detector_def))
 
-
+##################################################################################################
 class Network:
     """Class for a network of detectors.
     
@@ -223,6 +225,7 @@ class Network:
         
         return new_network
 
+##################################################################################################
 def GreenwichMeanSiderealTime(gps):
     # calculate the Greenwhich mean sidereal time
     return np.mod(9.533088395981618 + (gps - 1126260000.) / 3600. * 24. / cst.sidereal_day, 24) * np.pi / 12.
@@ -312,8 +315,8 @@ def AET(polarizations, eij, theta, ra, psi, L, ff):
 
     return np.hstack((A[:, np.newaxis], E[:, np.newaxis], T[:, np.newaxis]))
 
-
-def projection(parameters, detector, polarizations, timevector, redefine_tf_vectors=False):
+##################################################################################################
+def projection(parameters, detector, polarizations, timevector, redefine_tf_vectors=False, long_wavelength_approx = True):
 
     f_max = parameters.get('max_frequency_cutoff', None)
     detector_lifetime = getattr(detector, 'mission_lifetime', None)
@@ -347,7 +350,7 @@ def projection(parameters, detector, polarizations, timevector, redefine_tf_vect
     with warnings.catch_warnings():
         warnings.simplefilter('ignore', AstropyWarning)
         if detector.location == 'earth':
-            proj = projection_earth(parameters, detector, polarizations, new_timevector, in_band_slice)
+            proj = projection_earth(parameters, detector, polarizations, new_timevector, in_band_slice,long_wavelength_approx = long_wavelength_approx)
         elif detector.location == 'moon':
             proj = projection_moon(parameters, detector, polarizations, new_timevector, in_band_slice)
         elif detector.location == 'solarorbit':
@@ -447,6 +450,16 @@ def projection_solarorbit(parameters, detector, polarizations, timevector, in_ba
 
     return proj
 
+def sinc(x):
+    return np.sin(x)/x
+
+def Michelson_transfer_function(x, x_c, proj_arm):
+    norm_f = x/(2*x_c)
+
+    term1 = sinc(norm_f*(1-proj_arm)) * np.exp(-1.j * norm_f *(3+proj_arm))
+    term2 = sinc(norm_f*(1+proj_arm)) * np.exp(-1.j * norm_f *(1+proj_arm))
+
+    return 0.5 * (term1 + term2)
 
 def projection_earth(parameters, detector, polarizations, timevector, in_band_slice=slice(None)):
     """
@@ -471,6 +484,9 @@ def projection_earth(parameters, detector, polarizations, timevector, in_band_sl
     ra = parameters['ra']
     dec = parameters['dec']
     psi = parameters['psi']
+
+    # generally the long wavelenght approximation is True
+    # when long_wl it is set to 1 inside the parmaeters passed, you automatically set long_wavelenght_approx = False
 
     theta = np.pi / 2. - dec
     gmst = GreenwichMeanSiderealTime(timevector[in_band_slice])
@@ -528,17 +544,40 @@ def projection_earth(parameters, detector, polarizations, timevector, in_band_sl
         
         phase_shift = components[k].ephem.phase_term(ra, dec, np.squeeze(timevector)[in_band_slice], np.squeeze(ff))
 
+        if long_wavelength_approx:
 
-        # proj[:, k] = 0.5*(np.einsum('i,jik,k->j', e1, hij, e1) - np.einsum('i,jik,k->j', e2, hij, e2))
-        proj[in_band_slice, k] = 0.5 * (e1[0] ** 2 - e2[0] ** 2) * hxx \
-                     + 0.5 * (e1[1] ** 2 - e2[1] ** 2) * hyy \
-                     + 0.5 * (e1[2] ** 2 - e2[2] ** 2) * hzz \
-                     + (e1[0] * e1[1] - e2[0] * e2[1]) * hxy \
-                     + (e1[0] * e1[2] - e2[0] * e2[2]) * hxz \
-                     + (e1[1] * e1[2] - e2[1] * e2[2]) * hyz
+            proj[in_band_slice, k] = 0.5 * (e1[0] ** 2 - e2[0] ** 2) * hxx \
+                        + 0.5 * (e1[1] ** 2 - e2[1] ** 2) * hyy \
+                        + 0.5 * (e1[2] ** 2 - e2[2] ** 2) * hzz \
+                        + (e1[0] * e1[1] - e2[0] * e2[1]) * hxy \
+                        + (e1[0] * e1[2] - e2[0] * e2[2]) * hxz \
+                        + (e1[1] * e1[2] - e2[1] * e2[2]) * hyz
 
-        proj[in_band_slice, k] *= np.exp(-1.j * phase_shift)
-    # print("Calculation of projection: %s seconds" % (time.time() - start_time))
+            proj[in_band_slice, k] *= np.exp(-1.j * phase_shift)
+
+        else:
+            # the detailed calculation can be found at this link
+            # https://thesis.unipd.it/handle/20.500.12608/1/browse?filter_type=authority&authority=ist48184&filter_value=ist48184&filter_value_display=Amalberti%2C+Loris&type=author&sort_by=ASC&order=&rpp=20
+            # in section 2.2
+
+            proj_arm1 = kx*e1[0] + ky*e1[1] + kz*e1[2]
+            proj_arm2 = kx*e2[0] + ky*e2[1] + kz*e2[2]
+
+            f_c = cst.c / (2*np.pi*detector.L)
+
+            T1 = Michelson_transfer_function(np.squeeze(ff), f_c, proj_arm1[:,0])
+            T2 = Michelson_transfer_function(np.squeeze(ff), f_c, proj_arm2[:,0])
+
+            proj[in_band_slice, k] = 0.5 * (T1 * e1[0] ** 2  - T2 * e2[0] ** 2) * hxx \
+            + 0.5 * (T1 * e1[1] ** 2 - T2 * e2[1] ** 2) * hyy \
+            + 0.5 * (T1 * e1[2] ** 2 - T2 * e2[2] ** 2) * hzz \
+            + (T1 * e1[0] * e1[1] - T2 * e2[0] * e2[1]) * hxy \
+            + (T1 * e1[0] * e1[2] - T2 * e2[0] * e2[2]) * hxz \
+            + (T1 * e1[1] * e1[2] - T2 * e2[1] * e2[2]) * hyz
+
+            proj[in_band_slice, k] *= np.exp(-1.j * phase_shift)
+
+    #print("Calculation of projection: %s seconds" % (time.time() - start_time))
 
     return proj
 
