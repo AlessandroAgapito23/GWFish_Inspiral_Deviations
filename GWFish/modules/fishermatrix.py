@@ -299,7 +299,7 @@ def compute_detector_fisher(
         signal, timevector, frequencyvector = det.projection(signal_parameter_values, detector,
                                                              wave, t_of_f, redefine_tf_vectors=True, long_wavelength_approx = long_wavelength)
     else:
-        signal = det.projection(signal_parameter_values, detector, wave, t_of_f, , long_wavelength_approx = long_wavelength)
+        signal = det.projection(signal_parameter_values, detector, wave, t_of_f, long_wavelength_approx = long_wavelength)
         frequencyvector = detector.frequencyvector[:, 0]
 
     component_SNRs = det.SNR(detector, signal, use_duty_cycle, frequencyvector=frequencyvector)
