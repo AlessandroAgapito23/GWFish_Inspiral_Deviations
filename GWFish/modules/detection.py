@@ -350,7 +350,7 @@ def projection(parameters, detector, polarizations, timevector, redefine_tf_vect
     with warnings.catch_warnings():
         warnings.simplefilter('ignore', AstropyWarning)
         if detector.location == 'earth':
-            proj = projection_earth(parameters, detector, polarizations, new_timevector, in_band_slice,long_wavelength_approx = long_wavelength_approx)
+            proj = projection_earth(parameters, detector, polarizations, new_timevector, in_band_slice)
         elif detector.location == 'moon':
             proj = projection_moon(parameters, detector, polarizations, new_timevector, in_band_slice)
         elif detector.location == 'solarorbit':
