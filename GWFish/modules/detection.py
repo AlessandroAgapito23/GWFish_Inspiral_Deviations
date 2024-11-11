@@ -350,7 +350,7 @@ def projection(parameters, detector, polarizations, timevector, redefine_tf_vect
     with warnings.catch_warnings():
         warnings.simplefilter('ignore', AstropyWarning)
         if detector.location == 'earth':
-            proj = projection_earth(parameters, detector, polarizations, new_timevector, in_band_slice)
+            proj = projection_earth(parameters, detector, polarizations, new_timevector, in_band_slice, long_wavelength_approx=long_wavelength_approx)
         elif detector.location == 'moon':
             proj = projection_moon(parameters, detector, polarizations, new_timevector, in_band_slice)
         elif detector.location == 'solarorbit':
@@ -461,7 +461,7 @@ def Michelson_transfer_function(x, x_c, proj_arm):
 
     return 0.5 * (term1 + term2)
 
-def projection_earth(parameters, detector, polarizations, timevector, in_band_slice=slice(None)):
+def projection_earth(parameters, detector, polarizations, timevector, in_band_slice=slice(None), long_wavelength_approx = True):
     """
     See Nishizawa et al. (2009) arXiv:0903.0528 for definitions of the polarisation tensors.
     [u, v, w] represent the Earth-frame
