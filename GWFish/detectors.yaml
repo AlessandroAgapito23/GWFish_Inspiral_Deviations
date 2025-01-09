@@ -233,3 +233,149 @@ LGWA_Soundcheck:
             fmax:             4
             spacing:          linear
             df:               1./4096.
+            
+# BB
+ET_cryo_10:            
+            lat:              (40 + 31. / 60) * np.pi / 180.
+            lon:              (9 + 25. / 60) * np.pi / 180.
+            opening_angle:    np.pi / 3.
+            azimuth:          0. 
+            psd_data:         GWFish/detector_psd/ET_10_full_cryo_psd.txt
+            duty_factor:      0.85
+            detector_class:   earthDelta
+            plotrange:        3, 1000, 1e-25, 1e-20
+            fmin:             2.
+            fmax:             1024.
+            df:               1./16.
+ET_cryo_15:            
+            lat:              (40 + 31. / 60) * np.pi / 180.
+            lon:              (9 + 25. / 60) * np.pi / 180.
+            opening_angle:    np.pi / 3.
+            azimuth:          0. 
+            psd_data:         GWFish/detector_psd/ET_15_full_cryo_psd.txt
+            duty_factor:      0.85
+            detector_class:   earthDelta
+            plotrange:        3, 1000, 1e-25, 1e-20
+            fmin:             2.
+            fmax:             1024.
+            df:               1./16.  
+ET_HF_10:            
+            lat:              (40 + 31. / 60) * np.pi / 180.
+            lon:              (9 + 25. / 60) * np.pi / 180.
+            opening_angle:    np.pi / 3.
+            azimuth:          0. 
+            psd_data:         GWFish/detector_psd/ET_10_HF_psd.txt
+            duty_factor:      0.85
+            detector_class:   earthDelta
+            plotrange:        3, 1000, 1e-25, 1e-20
+            fmin:             2.
+            fmax:             1024.
+            df:               1./16.
+ET_HF_15:            
+            lat:              (40 + 31. / 60) * np.pi / 180.
+            lon:              (9 + 25. / 60) * np.pi / 180.
+            opening_angle:    np.pi / 3.
+            azimuth:          0. 
+            psd_data:         GWFish/detector_psd/ET_15_HF_psd.txt
+            duty_factor:      0.85
+            detector_class:   earthDelta
+            plotrange:        3, 1000, 1e-25, 1e-20
+            fmin:             2.
+            fmax:             1024.
+            df:               1./16.    
+L_Sar15_ET_cryo:            
+            lat:              (40 + 31. / 60) * np.pi / 180.
+            lon:              (9 + 25. / 60) * np.pi / 180.
+            opening_angle:    np.pi / 2.
+            azimuth:          0.
+            psd_data:         GWFish/detector_psd/ET_15_full_cryo_psd.txt
+            duty_factor:      0.85
+            detector_class:   earthL
+            plotrange:        3, 1000, 1e-25, 1e-20
+            fmin:             2.
+            fmax:             1024.
+            df:               1./16.      
+L_Sar20_ET_cryo:            
+            lat:              (40 + 31. / 60) * np.pi / 180.
+            lon:              (9 + 25. / 60) * np.pi / 180.
+            opening_angle:    np.pi / 2.
+            azimuth:          0.
+            psd_data:         GWFish/detector_psd/ET_20_full_cryo_psd.txt
+            duty_factor:      0.85
+            detector_class:   earthL
+            plotrange:        3, 1000, 1e-25, 1e-20
+            fmin:             2.
+            fmax:             1024.
+            df:               1./16.        
+L_Neth15_ET_cryo:            
+            lat:              (50 + 43. / 60 + 23. / 3600) * np.pi / 180.
+            lon:              (5 + 55. / 60 + 14. / 3600) * np.pi / 180.
+            opening_angle:    np.pi / 2.
+            azimuth:          45. * np.pi / 180.
+            psd_data:         GWFish/detector_psd/ET_15_full_cryo_psd.txt
+            duty_factor:      0.85
+            detector_class:   earthL
+            plotrange:        3, 1000, 1e-25, 1e-20
+            fmin:             2.
+            fmax:             1024.
+            df:               1./16.       
+L_Neth20_ET_cryo:            
+            lat:              (50 + 43. / 60 + 23. / 3600) * np.pi / 180.
+            lon:              (5 + 55. / 60 + 14. / 3600) * np.pi / 180.
+            opening_angle:    np.pi / 2.
+            azimuth:          45. * np.pi / 180.
+            psd_data:         GWFish/detector_psd/ET_20_full_cryo_psd.txt
+            duty_factor:      0.85
+            detector_class:   earthL
+            plotrange:        3, 1000, 1e-25, 1e-20
+            fmin:             2.
+            fmax:             1024.
+            df:               1./16.
+L_Sar15_ET_HF:            
+            lat:              (40 + 31. / 60) * np.pi / 180.
+            lon:              (9 + 25. / 60) * np.pi / 180.
+            opening_angle:    np.pi / 2.
+            azimuth:          0.
+            psd_data:         GWFish/detector_psd/ET_15_HF_psd.txt
+            duty_factor:      0.85
+            detector_class:   earthL
+            plotrange:        3, 1000, 1e-25, 1e-20
+            fmin:             2.
+            fmax:             1024.
+            df:               1./16.          
+L_Sar20_ET_HF:            
+            lat:              (40 + 31. / 60) * np.pi / 180.
+            lon:              (9 + 25. / 60) * np.pi / 180.
+            opening_angle:    np.pi / 2.
+            azimuth:          0.
+            psd_data:         GWFish/detector_psd/ET_20_HF_psd.txt
+            duty_factor:      0.85
+            detector_class:   earthL
+            plotrange:        3, 1000, 1e-25, 1e-20
+            fmin:             2.
+            fmax:             1024.
+            df:               1./16.      
+L_Neth15_ET_HF:            
+            lat:              (50 + 43. / 60 + 23. / 3600) * np.pi / 180.
+            lon:              (5 + 55. / 60 + 14. / 3600) * np.pi / 180.
+            opening_angle:    np.pi / 2.
+            azimuth:          45. * np.pi / 180.
+            psd_data:         GWFish/detector_psd/ET_15_HF_psd.txt
+            duty_factor:      0.85
+            detector_class:   earthL
+            plotrange:        3, 1000, 1e-25, 1e-20
+            fmin:             2.
+            fmax:             1024.
+            df:               1./16.         
+L_Neth20_ET_HF:            
+            lat:              (50 + 43. / 60 + 23. / 3600) * np.pi / 180.
+            lon:              (5 + 55. / 60 + 14. / 3600) * np.pi / 180.
+            opening_angle:    np.pi / 2.
+            azimuth:          45. * np.pi / 180.
+            psd_data:         GWFish/detector_psd/ET_20_HF_psd.txt
+            duty_factor:      0.85
+            detector_class:   earthL
+            plotrange:        3, 1000, 1e-25, 1e-20
+            fmin:             2.
+            fmax:             1024.
+            df:               1./16.
