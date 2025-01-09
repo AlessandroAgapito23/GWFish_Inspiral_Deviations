@@ -248,6 +248,8 @@ ET_cryo_10:
             fmax:             1024.
             spacing:          geometric
             df:               1./16.
+            npoints:          1000
+            arm_length:       10000
 ET_cryo_15:            
             lat:              (40 + 31. / 60) * np.pi / 180.
             lon:              (9 + 25. / 60) * np.pi / 180.
@@ -261,6 +263,8 @@ ET_cryo_15:
             fmax:             1024.
             spacing:          geometric
             df:               1./16.  
+            npoints:          1000
+            arm_length:       15000
 ET_HF_10:            
             lat:              (40 + 31. / 60) * np.pi / 180.
             lon:              (9 + 25. / 60) * np.pi / 180.
@@ -274,6 +278,8 @@ ET_HF_10:
             fmax:             1024.
             spacing:          geometric
             df:               1./16.
+            npoints:          1000
+            arm_length:       10000
 ET_HF_15:            
             lat:              (40 + 31. / 60) * np.pi / 180.
             lon:              (9 + 25. / 60) * np.pi / 180.
@@ -287,6 +293,8 @@ ET_HF_15:
             fmax:             1024.
             spacing:          geometric
             df:               1./16.    
+            npoints:          1000
+            arm_length:       15000
 L_Sar15_ET_cryo:            
             lat:              (40 + 31. / 60) * np.pi / 180.
             lon:              (9 + 25. / 60) * np.pi / 180.
@@ -299,7 +307,9 @@ L_Sar15_ET_cryo:
             fmin:             2.
             fmax:             1024.
             spacing:          geometric
-            df:               1./16.      
+            df:               1./16.  
+            npoints:          1000
+            arm_length:       15000
 L_Sar20_ET_cryo:            
             lat:              (40 + 31. / 60) * np.pi / 180.
             lon:              (9 + 25. / 60) * np.pi / 180.
@@ -312,7 +322,9 @@ L_Sar20_ET_cryo:
             fmin:             2.
             fmax:             1024.
             spacing:          geometric
-            df:               1./16.        
+            df:               1./16.
+            npoints:          1000
+            arm_length:       20000
 L_Neth15_ET_cryo:            
             lat:              (50 + 43. / 60 + 23. / 3600) * np.pi / 180.
             lon:              (5 + 55. / 60 + 14. / 3600) * np.pi / 180.
@@ -325,7 +337,9 @@ L_Neth15_ET_cryo:
             fmin:             2.
             fmax:             1024.
             spacing:          geometric
-            df:               1./16.       
+            df:               1./16.
+            npoints:          1000
+            arm_length:       15000
 L_Neth20_ET_cryo:            
             lat:              (50 + 43. / 60 + 23. / 3600) * np.pi / 180.
             lon:              (5 + 55. / 60 + 14. / 3600) * np.pi / 180.
@@ -339,6 +353,8 @@ L_Neth20_ET_cryo:
             fmax:             1024.
             spacing:          geometric
             df:               1./16.
+            npoints:          1000
+            arm_length:       20000
 L_Sar15_ET_HF:            
             lat:              (40 + 31. / 60) * np.pi / 180.
             lon:              (9 + 25. / 60) * np.pi / 180.
@@ -351,7 +367,9 @@ L_Sar15_ET_HF:
             fmin:             2.
             fmax:             1024.
             spacing:          geometric
-            df:               1./16.          
+            df:               1./16.
+            npoints:          1000
+            arm_length:       15000
 L_Sar20_ET_HF:            
             lat:              (40 + 31. / 60) * np.pi / 180.
             lon:              (9 + 25. / 60) * np.pi / 180.
@@ -364,7 +382,9 @@ L_Sar20_ET_HF:
             fmin:             2.
             fmax:             1024.
             spacing:          geometric
-            df:               1./16.      
+            df:               1./16.
+            npoints:          1000
+            arm_length:       20000
 L_Neth15_ET_HF:            
             lat:              (50 + 43. / 60 + 23. / 3600) * np.pi / 180.
             lon:              (5 + 55. / 60 + 14. / 3600) * np.pi / 180.
@@ -377,7 +397,9 @@ L_Neth15_ET_HF:
             fmin:             2.
             fmax:             1024.
             spacing:          geometric
-            df:               1./16.         
+            df:               1./16.
+            npoints:          1000
+            arm_length:       15000
 L_Neth20_ET_HF:            
             lat:              (50 + 43. / 60 + 23. / 3600) * np.pi / 180.
             lon:              (5 + 55. / 60 + 14. / 3600) * np.pi / 180.
@@ -391,3 +413,5 @@ L_Neth20_ET_HF:
             fmax:             1024.
             spacing:          geometric
             df:               1./16.
+            npoints:          1000
+            arm_length:       20000
