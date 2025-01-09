@@ -246,6 +246,7 @@ ET_cryo_10:
             plotrange:        3, 1000, 1e-25, 1e-20
             fmin:             2.
             fmax:             1024.
+            spacing:          geometric
             df:               1./16.
 ET_cryo_15:            
             lat:              (40 + 31. / 60) * np.pi / 180.
@@ -258,6 +259,7 @@ ET_cryo_15:
             plotrange:        3, 1000, 1e-25, 1e-20
             fmin:             2.
             fmax:             1024.
+            spacing:          geometric
             df:               1./16.  
 ET_HF_10:            
             lat:              (40 + 31. / 60) * np.pi / 180.
@@ -270,6 +272,7 @@ ET_HF_10:
             plotrange:        3, 1000, 1e-25, 1e-20
             fmin:             2.
             fmax:             1024.
+            spacing:          geometric
             df:               1./16.
 ET_HF_15:            
             lat:              (40 + 31. / 60) * np.pi / 180.
@@ -282,6 +285,7 @@ ET_HF_15:
             plotrange:        3, 1000, 1e-25, 1e-20
             fmin:             2.
             fmax:             1024.
+            spacing:          geometric
             df:               1./16.    
 L_Sar15_ET_cryo:            
             lat:              (40 + 31. / 60) * np.pi / 180.
@@ -294,6 +298,7 @@ L_Sar15_ET_cryo:
             plotrange:        3, 1000, 1e-25, 1e-20
             fmin:             2.
             fmax:             1024.
+            spacing:          geometric
             df:               1./16.      
 L_Sar20_ET_cryo:            
             lat:              (40 + 31. / 60) * np.pi / 180.
@@ -306,6 +311,7 @@ L_Sar20_ET_cryo:
             plotrange:        3, 1000, 1e-25, 1e-20
             fmin:             2.
             fmax:             1024.
+            spacing:          geometric
             df:               1./16.        
 L_Neth15_ET_cryo:            
             lat:              (50 + 43. / 60 + 23. / 3600) * np.pi / 180.
@@ -318,6 +324,7 @@ L_Neth15_ET_cryo:
             plotrange:        3, 1000, 1e-25, 1e-20
             fmin:             2.
             fmax:             1024.
+            spacing:          geometric
             df:               1./16.       
 L_Neth20_ET_cryo:            
             lat:              (50 + 43. / 60 + 23. / 3600) * np.pi / 180.
@@ -330,6 +337,7 @@ L_Neth20_ET_cryo:
             plotrange:        3, 1000, 1e-25, 1e-20
             fmin:             2.
             fmax:             1024.
+            spacing:          geometric
             df:               1./16.
 L_Sar15_ET_HF:            
             lat:              (40 + 31. / 60) * np.pi / 180.
@@ -342,6 +350,7 @@ L_Sar15_ET_HF:
             plotrange:        3, 1000, 1e-25, 1e-20
             fmin:             2.
             fmax:             1024.
+            spacing:          geometric
             df:               1./16.          
 L_Sar20_ET_HF:            
             lat:              (40 + 31. / 60) * np.pi / 180.
@@ -354,6 +363,7 @@ L_Sar20_ET_HF:
             plotrange:        3, 1000, 1e-25, 1e-20
             fmin:             2.
             fmax:             1024.
+            spacing:          geometric
             df:               1./16.      
 L_Neth15_ET_HF:            
             lat:              (50 + 43. / 60 + 23. / 3600) * np.pi / 180.
@@ -366,6 +376,7 @@ L_Neth15_ET_HF:
             plotrange:        3, 1000, 1e-25, 1e-20
             fmin:             2.
             fmax:             1024.
+            spacing:          geometric
             df:               1./16.         
 L_Neth20_ET_HF:            
             lat:              (50 + 43. / 60 + 23. / 3600) * np.pi / 180.
@@ -378,4 +389,5 @@ L_Neth20_ET_HF:
             plotrange:        3, 1000, 1e-25, 1e-20
             fmin:             2.
             fmax:             1024.
+            spacing:          geometric
             df:               1./16.
